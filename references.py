@@ -30,9 +30,14 @@ systemprompts = {
 
 import ollama
 # this lists models that you had pulled into ollama
-availablemodels = {
-    entry['name']: {'short_description': str(entry['details'])}
-    if 'name' in entry and 'details' in entry
-    else 'Unknown'  # Provide a default value for the entire dictionary entry
-    for entry in ollama.list()['models']
-}
+try:
+    models_list = ollama.list()['models']
+    availablemodels = {}
+    for entry in models_list:
+        if 'name' in entry:
+            model_name = entry['name']
+            description = str(entry.get('details', 'No details available'))
+            availablemodels[model_name] = {'short_description': description}
+except Exception as e:
+    print(f"Error loading models: {e}")
+    availablemodels = {"llama3": {"short_description": "Default model"}}
