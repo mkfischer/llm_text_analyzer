@@ -30,4 +30,4 @@ systemprompts = {
 
 import ollama
 # this lists models that you had pulled into ollama
-availablemodels = {entry['name']: {'short_description': str(entry['details'])} for entry in ollama.list()['models']}
+availablemodels = {entry['name']: {'short_description': str(entry['details'])} if 'name' in entry and 'details' in entry else 'Unknown': {'short_description': 'Unknown'} for entry in ollama.list()['models']}
