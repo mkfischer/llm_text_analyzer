@@ -33,6 +33,7 @@ import sys
 
 # this lists models that you had pulled into ollama
 try:
+    ollama.api_base_url = 'http://localhost:11434'
     models = ollama.list()
     availablemodels = {}
     for model in models['models']:
