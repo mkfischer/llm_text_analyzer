@@ -4,3 +4,5 @@ Flask-Session
 ollama
 sentence-transformers
 faiss-cpu
+langchain-community
+langchain-ollama
