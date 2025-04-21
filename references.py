@@ -31,13 +31,12 @@ systemprompts = {
 import ollama
 # this lists models that you had pulled into ollama
 try:
-    models_list = ollama.list()['models']
+    models = ollama.list()
     availablemodels = {}
-    for entry in models_list:
-        if 'name' in entry:
-            model_name = entry['name']
-            description = str(entry.get('details', 'No details available'))
-            availablemodels[model_name] = {'short_description': description}
+    for model in models['models']:
+        model_name = model['name']
+        description = str(model.get('details', 'No details available'))
+        availablemodels[model_name] = {'short_description': description}
     
     # If no models were found, add default models
     if not availablemodels:
