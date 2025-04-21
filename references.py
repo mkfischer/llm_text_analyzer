@@ -29,6 +29,8 @@ systemprompts = {
 }
 
 import ollama
+import sys
+
 # this lists models that you had pulled into ollama
 try:
     models = ollama.list()
@@ -38,17 +40,11 @@ try:
         description = str(model.get('details', 'No details available'))
         availablemodels[model_name] = {'short_description': description}
     
-    # If no models were found, add default models
+    # If no models were found, exit
     if not availablemodels:
-        availablemodels = {
-            "llama3": {"short_description": "Meta's Llama 3 model"},
-            "mistral": {"short_description": "Mistral AI model"},
-            "gemma": {"short_description": "Google's Gemma model"}
-        }
+        print("No models found. Please ensure Ollama is running and has models available.")
+        sys.exit(1)
 except Exception as e:
     print(f"Error loading models: {e}")
-    availablemodels = {
-        "llama3": {"short_description": "Meta's Llama 3 model"},
-        "mistral": {"short_description": "Mistral AI model"},
-        "gemma": {"short_description": "Google's Gemma model"}
-    }
+    print("Please ensure Ollama is running and accessible.")
+    sys.exit(1)
