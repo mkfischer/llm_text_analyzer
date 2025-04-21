@@ -81,7 +81,9 @@
                 </td>
             </tr>
             <tr>
-                <td>Select model:</td>
+                <td>
+                    <span style="background-color: yellow;">Select model:</span>
+                </td>
                 <td>
                     <select name="model" id="model-select" onchange="updateLabel()">
                         {% for key, value in models.items() %}
@@ -89,6 +91,8 @@
                         {% endfor %}
                     </select>
                     <label id="model-description">model description goes here</label>
+                    <br>
+                    A Default Model Is Set
                     <br>    
                 </td>
             </tr>
