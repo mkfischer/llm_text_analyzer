@@ -85,7 +85,7 @@
                 <td>
                     <select name="model" id="model-select" onchange="updateLabel()">
                         {% for key, value in models.items() %}
-                            <option value="{{ key }}" data-model-hint="{{ value.short_description }}" {% if value.get('selected') %}selected{% endif %}>{{ key }}</option>
+                            <option value="{{ key }}" data-model-hint="{{ value.short_description }}" {% if value.get('selected') == True %}selected{% endif %}>{{ key }}</option>
                         {% endfor %}
                     </select>
                     <label id="model-description">model description goes here</label>
@@ -99,7 +99,7 @@
                 <td>
                     <select name="systempromptselection" id="systemprompt-select" onchange="updateSystemPrompt()">
                         {% for key, value in systemprompts.items() %}
-                            <option value="{{ key }}" data-default-question="{{ value.default_question }}" data-systemprompt="{{ value.system_prompt }}" {% if value['selected'] %}selected{% endif %}>{{ value['short_description'] }}</option>
+                            <option value="{{ key }}" data-default-question="{{ value.default_question }}" data-systemprompt="{{ value.system_prompt }}" {% if value['selected'] == True %}selected{% endif %}>{{ value['short_description'] }}</option>
                         {% endfor %}
                     </select><br>
                 
