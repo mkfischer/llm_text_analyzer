@@ -38,6 +38,18 @@ try:
             model_name = entry['name']
             description = str(entry.get('details', 'No details available'))
             availablemodels[model_name] = {'short_description': description}
+    
+    # If no models were found, add default models
+    if not availablemodels:
+        availablemodels = {
+            "llama3": {"short_description": "Meta's Llama 3 model"},
+            "mistral": {"short_description": "Mistral AI model"},
+            "gemma": {"short_description": "Google's Gemma model"}
+        }
 except Exception as e:
     print(f"Error loading models: {e}")
-    availablemodels = {"llama3": {"short_description": "Default model"}}
+    availablemodels = {
+        "llama3": {"short_description": "Meta's Llama 3 model"},
+        "mistral": {"short_description": "Mistral AI model"},
+        "gemma": {"short_description": "Google's Gemma model"}
+    }
