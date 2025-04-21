@@ -85,7 +85,7 @@
                 <td>
                     <select name="model" id="model-select" onchange="updateLabel()">
                         {% for key, value in models.items() %}
-                            <option value="{{ key }}" data-model-hint="{{ value.short_description }}" {% if value['selected'] %}selected{% endif %}>{{ key }}</option>
+                            <option value="{{ key }}" data-model-hint="{{ value.short_description }}" {% if value.get('selected') %}selected{% endif %}>{{ key }}</option>
                         {% endfor %}
                     </select>
                     <label id="model-description">model description goes here</label>

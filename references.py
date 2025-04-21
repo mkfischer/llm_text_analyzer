@@ -30,7 +30,19 @@ systemprompts = {
 import ollama
 import sys
 
+default_model = "qwen2.5:32b-instruct"
+
 availablemodels = {
     entry["model"]: {"short_description": str(entry["details"])}
     for entry in ollama.list()["models"]
 }
+
+# Automatically select the default model if it's available
+if default_model in availablemodels:
+    for model in availablemodels:
+        availablemodels[model]["selected"] = model == default_model
+else:
+    # If the default model isn't available, select the first model
+    first_model = next(iter(availablemodels), None)
+    if first_model:
+        availablemodels[first_model]["selected"] = True
